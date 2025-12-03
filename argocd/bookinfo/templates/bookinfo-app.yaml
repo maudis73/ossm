@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bookinfo
+  namespace: openshift-gitops
+  finalizers: [ resources-finalizer.argocd.argoproj.io ]
+spec:
+  project: default
+  source:
+    repoURL: {{ .Values.repoURL }}
+    path: manifest/bookinfo
+    targetRevision: {{ .Values.targetRevision }}
+    helm:
+      parameters:
+        - name: namespace
+          value: {{ .Values.targetNamespace }}
+  destination:
+    server: https://kubernetes.default.svc
+    # Argo will apply manifests here, BUT the namespace.yaml inside
+    # the chart will actually handle the creation and labeling.
+    namespace: {{ .Values.targetNamespace }}
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
+    # Allow Argo to create the namespace if your namespace.yaml doesn't fully handle it
+    # (Though having namespace.yaml is safer for labels)
+    syncOptions: [ CreateNamespace=true ]

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-bookinfo
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: &repo_url 'https://github.com/maudis73/ossm.git'
+    targetRevision: HEAD
+    path: argocd/bookinfo
+    helm:
+      parameters:
+        - name: repoURL
+          value: *repo_url
+        - name: targetNamespace
+          value: "bookinfo-demo"
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: openshift-gitops
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }

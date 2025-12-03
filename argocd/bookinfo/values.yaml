@@ -1,0 +1,3 @@
+targetNamespace: bookinfo-demo
+repoURL: https://...
+targetRevision: HEAD
