@@ -1,4 +1,0 @@
-namespace: bookinfo-demo
-# Match this to your Istio Control Plane revision (usually 'default' or 'basic')
-istioRevision: default
-domain: example.com

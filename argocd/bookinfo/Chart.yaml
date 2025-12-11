@@ -1,4 +1,0 @@
-apiVersion: v2
-name: bookinfo-logic
-version: 1.0.0
-description: ArgoCD Logic for Bookinfo Application
