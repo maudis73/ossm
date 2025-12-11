@@ -1,0 +1,17 @@
+apiVersion: kiali.io/v1alpha1
+kind: Kiali
+metadata:
+  name: kiali
+  namespace: istio-system
+spec:
+  auth:
+    strategy: anonymous
+  deployment:
+    accessible_namespaces: ["**"]
+  external_services:
+    tracing:
+      enabled: true
+      use_grpc: true
+      # Updated to point to central-observability
+      in_cluster_url: "http://tempo-query-frontend.central-observability.svc.cluster.local:16685"
+      url: "" 

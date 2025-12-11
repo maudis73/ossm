@@ -1,0 +1,20 @@
+apiVersion: sailoperator.io/v1alpha1
+kind: Istio
+metadata:
+  name: default
+  namespace: istio-system
+spec:
+  version: v1.20.0 
+  namespace: istio-system
+  values:
+    meshConfig:
+      enableTracing: true
+      extensionProviders:
+      - name: tempo
+        opentelemetry:
+          port: 4317
+          # Updated to point to central-observability
+          service: tempo-distributor.central-observability.svc.cluster.local
+      defaultConfig:
+        tracing:
+          sampling: 100.0
