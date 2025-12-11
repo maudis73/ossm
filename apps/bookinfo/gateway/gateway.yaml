@@ -3,6 +3,8 @@ kind: Gateway
 metadata:
   name: bookinfo-gateway
   namespace: bookinfo
+  annotations:  # <--- ADD THIS BLOCK
+    networking.istio.io/service-type: "ClusterIP"
 spec:
   gatewayClassName: istio
   listeners:
