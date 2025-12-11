@@ -4,7 +4,7 @@ metadata:
   name: default
   namespace: istio-system
 spec:
-  version: v1.20.0 
+  version: v1.26-latest 
   namespace: istio-system
   values:
     meshConfig:
