@@ -17,7 +17,9 @@ spec:
       containers:
       - name: minio
         image: quay.io/minio/minio:latest
-        args: ["server", "/data", "--console-address", ":9001"]
+        # CHANGE: Create the directory first, then start the server
+        command: ["/bin/sh", "-c"]
+        args: ["mkdir -p /data/tempo && minio server /data --console-address :9001"]
         env:
         - name: MINIO_ROOT_USER
           value: "minio"
