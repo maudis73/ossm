@@ -7,3 +7,4 @@ resources:
   - prometheus.yaml
   - namespace-cni.yaml
   - istio-cni.yaml
+  - telemetry-tracing.yaml

@@ -9,12 +9,15 @@ spec:
   values:
     meshConfig:
       enableTracing: true
+      # 1. We remove the global 'defaultConfig.tracing.zipkin' block.
+      # 2. We define the provider details here:
       extensionProviders:
-      - name: tempo
+      - name: tempo-otlp
         opentelemetry:
           port: 4317
-          # Updated to point to central-observability
-          service: tempo-distributor.central-observability.svc.cluster.local
+          service: tempo-tempo-distributor.central-observability.svc.cluster.local
+          http:
+            timeout: 5s
       defaultConfig:
         tracing:
           sampling: 100.0
