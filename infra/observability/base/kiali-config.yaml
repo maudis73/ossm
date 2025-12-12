@@ -17,5 +17,5 @@ spec:
       url: "" 
     grafana:
       enabled: true
-      in_cluster_url: "http://grafana-service.central-observability.svc.cluster.local:3000"
+      in_cluster_url: "http://grafana.central-observability.svc.cluster.local:3000"
       url: "grafana-central-observability.apps.ocp4.masales.cloud"
