@@ -4,19 +4,19 @@ metadata:
   name: default
   namespace: istio-system
 spec:
-  version: v1.26-latest 
+  version: v1.26-latest
+  # Removed invalid 'namespace' in spec
   values:
     meshConfig:
       enableTracing: true
-      # 1. We remove the global 'defaultConfig.tracing.zipkin' block.
-      # 2. We define the provider details here:
       extensionProviders:
       - name: tempo-otlp
         opentelemetry:
           port: 4317
           service: tempo-tempo-distributor.central-observability.svc.cluster.local
-          http:
-            timeout: 5s
+          # Removed invalid 'http' block here (OTLP uses gRPC)
       defaultConfig:
         tracing:
+          # Note: We don't put 'address' here for OTLP. 
+          # We rely on the Telemetry policy to pick the provider above.
           sampling: 100.0
