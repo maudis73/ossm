@@ -5,7 +5,6 @@ metadata:
   namespace: istio-system
 spec:
   version: v1.26-latest 
-  namespace: istio-system
   values:
     meshConfig:
       enableTracing: true
