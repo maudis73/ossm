@@ -517,10 +517,7 @@ spec:
               subPath: ""
       dnsPolicy: ClusterFirst
       securityContext:
-        fsGroup: 65534
-        runAsGroup: 65534
         runAsNonRoot: true
-        runAsUser: 65534
       terminationGracePeriodSeconds: 300
       volumes:
         - name: config-volume
