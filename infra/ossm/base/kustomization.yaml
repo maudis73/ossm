@@ -4,3 +4,4 @@ resources:
   - namespace.yaml
   - istio.yaml
   - telemetry.yaml
+  - prometheus.yaml
