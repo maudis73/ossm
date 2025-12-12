@@ -5,3 +5,5 @@ resources:
   - istio.yaml
   - telemetry.yaml
   - prometheus.yaml
+  - namespace-cni.yaml
+  - istio-cni.yaml

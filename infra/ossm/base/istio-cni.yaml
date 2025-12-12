@@ -1,0 +1,8 @@
+apiVersion: sailoperator.io/v1
+kind: IstioCNI
+metadata:
+  name: default
+  namespace: istio-cni # It recommends its own namespace
+spec:
+  version: v1.26-latest # Must match your Control Plane version
+  namespace: istio-cni
